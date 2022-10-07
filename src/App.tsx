@@ -1,20 +1,31 @@
-import { BrowserRouter } from "react-router-dom";
+import { Suspense } from "react";
 
-import { AppSpotlight, AuthProvider, ThemeProvider } from "~/components/core";
+import { NotificationsProvider } from "@mantine/notifications";
+import { ModalsProvider } from "@mantine/modals";
+
+import { AppSpotlight, AuthProvider, HistoryRouter, RootProvider, ThemeProvider } from "~/components/core";
 
 import RootRoutes from "~/routes";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <ThemeProvider>
-          <AppSpotlight>
-            <RootRoutes />
-          </AppSpotlight>
-        </ThemeProvider>
-      </AuthProvider>
-    </BrowserRouter>
+    <HistoryRouter>
+      <ThemeProvider>
+        <AppSpotlight>
+          <NotificationsProvider>
+            <ModalsProvider>
+              <AuthProvider>
+                <RootProvider>
+                  <Suspense>
+                    <RootRoutes />
+                  </Suspense>
+                </RootProvider>
+              </AuthProvider>
+            </ModalsProvider>
+          </NotificationsProvider>
+        </AppSpotlight>
+      </ThemeProvider>
+    </HistoryRouter>
   );
 }
 

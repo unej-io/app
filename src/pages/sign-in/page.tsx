@@ -1,25 +1,25 @@
-import {} from "react";
+import { Container, Text, Title } from "@mantine/core";
 
-import { Button } from "@mantine/core";
+import { AnchorLink, Head } from "~/components/core";
 
-import useAuthStore from "~/stores/auth";
-
-import { Head } from "~/components/core";
+import SignInForm from "./components/SignInForm";
 
 function SignInPage() {
-  const { signIn } = useAuthStore();
-
-  function handleSignIn() {
-    signIn({ username: "flamrdevs", password: "flamrdevs" });
-  }
-
   return (
     <>
       <Head title={{ prefix: "Sign In" }} />
 
-      <div>SignInPage</div>
+      <Container size="xs" my="xl" p="xl">
+        <Title align="center">Welcome back!</Title>
+        <Text color="dimmed" size="sm" align="center" mt={5}>
+          Do not have an account yet?{" "}
+          <AnchorLink to="/sign-up" size="sm">
+            Sign up
+          </AnchorLink>
+        </Text>
 
-      <Button onClick={handleSignIn}>Sign In</Button>
+        <SignInForm />
+      </Container>
     </>
   );
 }

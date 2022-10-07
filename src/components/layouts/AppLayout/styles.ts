@@ -47,6 +47,10 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  drawer__navbar: {
+    border: "none",
+  },
+
   main: {
     position: "relative",
     marginTop: HeaderHeight,

@@ -13,7 +13,7 @@ const SpotlightOpenerActionIcon = forwardRef<HTMLButtonElement, SpotlightOpenerA
   const spotlight = useSpotlight();
 
   return (
-    <ActionIcon ref={ref} onClick={spotlight.openSpotlight} {...props}>
+    <ActionIcon ref={ref} {...props} onClick={spotlight.openSpotlight}>
       <IconSearch />
     </ActionIcon>
   );

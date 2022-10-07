@@ -1,15 +1,14 @@
 import { DEFAULT_THEME } from "@mantine/core";
-import type { ColorScheme, MantineColor, MantineThemeOverride } from "@mantine/core";
+import type { ColorScheme, MantineColor, MantineSize, MantineThemeOverride } from "@mantine/core";
 
 import type { AvatarProps } from "@mantine/core";
 import type { CheckboxProps } from "@mantine/core";
 import type { ContainerProps } from "@mantine/core";
 import type { PasswordInputProps } from "@mantine/core";
-import type { NavLinkProps } from "@mantine/core";
 
-import { IconCaretRight, IconUser } from "@tabler/icons";
+import { IconUser } from "@tabler/icons";
 
-import { CheckboxIcon, PasswordInputVisibilityToggleIcon } from "../ui";
+import { CheckboxIcon, PasswordInputVisibilityToggleIcon } from "../components/core";
 
 const components: MantineThemeOverride["components"] = {
   Avatar: {
@@ -32,35 +31,23 @@ const components: MantineThemeOverride["components"] = {
       visibilityToggleIcon: PasswordInputVisibilityToggleIcon,
     } as PasswordInputProps,
   },
-  NavLink: {
-    defaultProps: {
-      rightSection: <IconCaretRight size={16} />,
-    } as NavLinkProps,
-  },
 };
 
-type CreateThemeOptions = {
-  colorScheme: ColorScheme;
-  primaryColor: MantineColor;
-};
-
-function createTheme(options: CreateThemeOptions): MantineThemeOverride {
-  const { colorScheme, primaryColor } = options;
-
+function createTheme(colorScheme: ColorScheme, primaryColor: MantineColor, defaultRadius: MantineSize): MantineThemeOverride {
   return {
     colorScheme,
     components,
-    defaultRadius: "md",
+    defaultRadius,
     primaryColor,
     defaultGradient: {
       from: DEFAULT_THEME.colors[primaryColor][6],
       to: DEFAULT_THEME.colors[primaryColor][4],
       deg: 45,
     },
-    fontFamily: "Montserrat, sans-serif",
+    fontFamily: "Nunito, sans-serif",
     fontFamilyMonospace: "monospace",
     headings: {
-      fontFamily: "Montserrat, sans-serif",
+      fontFamily: "Open Sans, sans-serif",
     },
     cursorType: "pointer",
     activeStyles: {

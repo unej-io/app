@@ -18,8 +18,10 @@
     "baseUrl": "./",
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  "include": ["src"],
+  "include": ["src", "env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
