@@ -32,7 +32,7 @@ const actionIconVariants: ActionIconVariant[] = ["default", "filled", "gradient"
 const avatarVariants: AvatarProps["variant"][] = ["filled", "gradient", "light", "outline"];
 const buttonVariants: ButtonVariant[] = ["default", "filled", "gradient", "light", "outline", "subtle"];
 
-function DEVComponents() {
+function DEVComponentsPage() {
   return (
     <Container py="xl">
       <Grid gutter="xl">
@@ -554,4 +554,4 @@ function DEVComponents() {
   );
 }
 
-export default DEVComponents;
+export default DEVComponentsPage;

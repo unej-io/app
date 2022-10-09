@@ -19,8 +19,8 @@ function SignInForm() {
 
   const form = useForm<SignInFormValues>({
     initialValues: {
-      email: "flamrdevs@gmail.com",
-      password: "flamrdevs",
+      email: "",
+      password: "",
     },
   });
 

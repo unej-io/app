@@ -1,7 +1,10 @@
 import create from "zustand";
-import { devtools } from "zustand/middleware";
 
 import type { User } from "firebase/auth";
+
+import { withDevtools } from "./@utilities";
+
+const NAME = "app-unej-io:auth-store";
 
 type AuthUser = User;
 
@@ -18,16 +21,19 @@ type AuthStoreAction = {
 type AuthStoreType = AuthStoreState & AuthStoreAction;
 
 const useAuthStore = create<AuthStoreType>()(
-  devtools((set) => ({
-    user: null,
-    loading: true,
-    setUser: (user) => {
-      set({ user });
-    },
-    setLoading: (loading) => {
-      set({ loading });
-    },
-  }))
+  withDevtools(
+    (set) => ({
+      user: null,
+      loading: true,
+      setUser: (user) => {
+        set({ user });
+      },
+      setLoading: (loading) => {
+        set({ loading });
+      },
+    }),
+    { name: NAME }
+  )
 );
 
 export type { AuthStoreState, AuthStoreAction, AuthStoreType };

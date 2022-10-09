@@ -19,9 +19,9 @@ function SignUpForm() {
 
   const form = useForm<SignUpFormValues>({
     initialValues: {
-      email: "flamrdevs@gmail.com",
-      password: "flamrdevs",
-      confirmPassword: "flamrdevs",
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
   });
 

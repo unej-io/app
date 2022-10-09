@@ -1,30 +1,29 @@
 import create from "zustand";
-import { devtools } from "zustand/middleware";
+import createContext from "zustand/context";
+import type { StoreApi } from "zustand";
+
+import { withDevtools } from "./@utilities";
+
+const NAME = "app-unej-io:user-store";
 
 type UserRole = "student" | "organization";
 
 type User = {
-  role: UserRole;
+  role?: UserRole;
 };
 
-type UserStoreState = {
-  data: User | null;
-};
+type UserStoreType = User;
 
-type UserStoreAction = {
-  setUser: (data: User | null) => void;
-};
+const createUserStore = (user: User) => () =>
+  create<UserStoreType>()(
+    withDevtools(() => user as UserStoreType, {
+      name: NAME,
+    })
+  );
 
-type UserStoreType = UserStoreState & UserStoreAction;
+const { Provider: UserStoreProvider, useStore: useUserStore } = createContext<StoreApi<UserStoreType>>();
 
-const useUserStore = create<UserStoreType>()(
-  devtools((set) => ({
-    data: null,
-    setUser: (data) => {
-      set({ data });
-    },
-  }))
-);
-
-export type { UserStoreState, UserStoreAction, UserStoreType };
+export type { User, UserStoreType };
+export { createUserStore };
+export { UserStoreProvider };
 export default useUserStore;

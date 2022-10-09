@@ -47,8 +47,8 @@ function ResetPasswordForm(props: ResetPasswordFormProps) {
   const form = useForm<ResetPasswordFormValues>({
     initialValues: {
       code: props.code,
-      password: "new-flamrdevs",
-      confirmPassword: "new-flamrdevs",
+      password: "",
+      confirmPassword: "",
     },
   });
 

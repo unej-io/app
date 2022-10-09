@@ -1,37 +1,65 @@
-// import { useEffect } from "react";
-// import type { PropsWithChildren } from "react"
+import { useEffect, useMemo, useState } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 
-// import { useAuthUser } from "~/hooks/stores";
-// import useUserStore from "~/stores/user";
+import { delay } from "javascript-yesterday";
 
-// type UserProviderProps = PropsWithChildren<{
+import useAuthStore from "~/stores/auth";
+import { createUserStore, UserStoreProvider } from "~/stores/user";
+import type { User } from "~/stores/user";
 
-// }>
+async function fakeGetUserByUID(uid: string): Promise<User> {
+  await delay(500);
+  console.log(`fakeGetUserByUID:${uid}`);
 
-// async function fakeFindUserByAuthUserID(id: string) {
-//   return {}
-// }
+  return {
+    role: "student",
+  };
+}
 
-// function UserProvider(props: UserProviderProps) {
+type UserProviderChildProps = PropsWithChildren<{
+  user: User;
+}>;
 
-//   const authUser = useAuthUser()
+function UserProviderChild(props: UserProviderChildProps) {
+  const createStore = useMemo(() => createUserStore(props.user), [props.user]);
 
-//   useEffect(() => {
+  return <UserStoreProvider createStore={createStore}>{props.children}</UserStoreProvider>;
+}
 
-// fakeFindUserByAuthUserID(authUser.uid)
-//   }, [])
+type UserProviderProps = PropsWithChildren<{
+  fallback?: ReactNode;
+}>;
 
-//   /**
-//    * WAIT FOR INITIAL AUTH CHECK
-//    */
-//    if (user.loading) return null
+function UserProvider(props: UserProviderProps) {
+  const auth = useAuthStore();
 
-//   /**
-//    * RENDER ROUTES
-//    */
-//    return <>{props.children}</>;
-// }
+  const [user, setUser] = useState<User>();
 
-// export type { UserProviderProps }
-// export default UserProvider
-export {};
+  useEffect(() => {
+    async function fetch() {
+      if (!auth.user) {
+        setUser({});
+        return;
+      }
+
+      const user = await fakeGetUserByUID(auth.user.uid);
+
+      if (user) {
+        setUser(user);
+      } else {
+        setUser({});
+      }
+    }
+
+    fetch();
+  }, [auth.user]);
+
+  if (user) {
+    return <UserProviderChild user={user}>{props.children}</UserProviderChild>;
+  }
+
+  return <>{props.fallback}</>;
+}
+
+export type { UserProviderProps };
+export default UserProvider;

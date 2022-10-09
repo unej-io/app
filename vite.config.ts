@@ -34,7 +34,7 @@ export default defineConfig({
             return modules.some((module) => id.includes(["node_modules", module].join("/")));
           }
 
-          if (includes("react", "react-dom", "@mantine", "@tabler", "@jsonforms")) {
+          if (includes("react", "react-dom", "@emotion", "@mantine", "@tabler", "@jsonforms")) {
             return "core";
           }
 

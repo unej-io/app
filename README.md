@@ -24,6 +24,35 @@
 
 Website [URL][app]
 
+# Global Roadmap
+
+- [ ] Basic APP
+  - [x] Theme
+    - [x] Color Scheme
+    - [x] Primary Color
+    - [x] Radius
+  - [x] Auth
+    - [x] Account middleware
+    - [ ] Role based guard
+- [ ] Form Feature
+  - [ ] Builder
+  - [ ] Renderer
+  - [ ] Sheet
+- [ ] Link Feature
+  - [ ] Builder
+  - [ ] Renderer
+- [ ] Apps Feature
+  - [ ] Acak
+  - [ ] Konversi
+- [ ] Events API Feature
+  - [ ] Rest API
+  - [ ] Build npm and/or php package
+  - [ ] Docs
+- [ ] Internationalization
+  - [ ] en
+  - [ ] id
+- [ ] More....( any idea ?)
+
 # Stacks
 
 - [React](https://reactjs.org)
@@ -38,9 +67,9 @@ Website [URL][app]
 
 # Contributing
 
-See [how to contribute][contributing]
+See [how to contribute][contribute]
 
 [cover]: https://raw.githubusercontent.com/unej-io/brand/main/Cover.png?sanitize=true
 [site]: https://unej-io.netlify.app
 [app]: https://app-unej-io.netlify.app
-[contributing]: https://unej-io.netlify.app/contributing
+[contribute]: https://unej-io.netlify.app/contribute

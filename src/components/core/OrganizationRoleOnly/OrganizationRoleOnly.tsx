@@ -8,15 +8,15 @@ import useUserStore from "~/stores/user";
 type OrganizationRoleOnlyProps = PropsWithChildren<{}>;
 
 function OrganizationRoleOnly(props: OrganizationRoleOnlyProps) {
-  const { data } = useUserStore();
+  const { role } = useUserStore();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (data?.role !== "organization") navigate("/", { replace: true });
-  }, [JSON.stringify(data)]);
+    if (role !== "organization") navigate("/", { replace: true });
+  }, [role]);
 
-  if (data?.role !== "organization") return null;
+  if (role !== "organization") return null;
 
   return <>{props.children}</>;
 }

@@ -1,19 +1,21 @@
-import { forwardRef } from "react";
+import { forwardRef, useCallback } from "react";
 
 import { ActionIcon } from "@mantine/core";
 import type { ActionIconProps } from "@mantine/core";
 
 import { IconSearch } from "@tabler/icons";
 
-import { useSpotlight } from "@mantine/spotlight";
+import { openSpotlight } from "@mantine/spotlight";
 
 type SpotlightOpenerActionIconProps = ActionIconProps;
 
 const SpotlightOpenerActionIcon = forwardRef<HTMLButtonElement, SpotlightOpenerActionIconProps>(function ({ children, ...props }, ref) {
-  const spotlight = useSpotlight();
+  const handleClick = useCallback(() => {
+    openSpotlight();
+  }, []);
 
   return (
-    <ActionIcon ref={ref} {...props} onClick={spotlight.openSpotlight}>
+    <ActionIcon ref={ref} {...props} onClick={handleClick}>
       <IconSearch />
     </ActionIcon>
   );

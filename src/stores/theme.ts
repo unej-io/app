@@ -1,5 +1,5 @@
 import create from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 import type { ColorScheme, MantineColor, MantineSize } from "@mantine/core";
 
@@ -7,7 +7,9 @@ import { BroadcastChannel } from "broadcast-channel";
 
 import { isTypeofString } from "javascript-yesterday";
 
-const NAME = "unej-io:theme-store";
+import { withDevtools } from "./@utilities";
+
+const NAME = "app-unej-io:theme-store";
 const colorSchemes: ColorScheme[] = ["light", "dark"];
 const primaryColors: MantineColor[] = ["red", "orange", "yellow", "green", "blue", "indigo", "grape"];
 const radii: MantineSize[] = ["sm", "md", "lg"];
@@ -39,7 +41,7 @@ type ThemeStoreAction = {
 
 type ThemeStoreType = ThemeStoreState & ThemeStoreAction;
 
-const channel = new BroadcastChannel<
+type ThemeStoreMessageData =
   | {
       type: "toggle-color-scheme";
       payload: ColorScheme;
@@ -55,11 +57,12 @@ const channel = new BroadcastChannel<
   | {
       type: "set-radius";
       payload: MantineSize;
-    }
->("foobar");
+    };
+
+const channel = new BroadcastChannel<ThemeStoreMessageData>(NAME);
 
 const useThemeStore = create<ThemeStoreType>()(
-  devtools(
+  withDevtools(
     persist(
       (set, get) => ({
         colorScheme: "light",
@@ -72,54 +75,34 @@ const useThemeStore = create<ThemeStoreType>()(
         },
         setColorScheme: (colorScheme) => {
           if (isValidColorScheme(colorScheme)) {
-            channel.postMessage({ type: "set-color-scheme", payload: colorScheme });
             set({ colorScheme });
+            channel.postMessage({ type: "set-color-scheme", payload: colorScheme });
           }
         },
         setPrimaryColor: (primaryColor) => {
           if (isValidPrimaryColor(primaryColor)) {
-            channel.postMessage({ type: "set-primary-color", payload: primaryColor });
             set({ primaryColor });
+            channel.postMessage({ type: "set-primary-color", payload: primaryColor });
           }
         },
         setRadius: (radius) => {
           if (isValidRadius(radius)) {
-            channel.postMessage({ type: "set-radius", payload: radius });
             set({ radius });
+            channel.postMessage({ type: "set-radius", payload: radius });
           }
         },
       }),
       {
         name: NAME,
       }
-    )
+    ),
+    {
+      name: NAME,
+    }
   )
 );
 
-channel.onmessage = (data) => {
-  switch (data.type) {
-    case "toggle-color-scheme":
-      useThemeStore.setState({ colorScheme: data.payload });
-      break;
-
-    case "set-color-scheme":
-      useThemeStore.setState({ colorScheme: data.payload });
-      break;
-
-    case "set-primary-color":
-      useThemeStore.setState({ primaryColor: data.payload });
-      break;
-
-    case "set-radius":
-      useThemeStore.setState({ radius: data.payload });
-      break;
-
-    default:
-      break;
-  }
-};
-
-export type { ThemeStoreState, ThemeStoreAction, ThemeStoreType };
+export type { ThemeStoreState, ThemeStoreAction, ThemeStoreType, ThemeStoreMessageData };
 export { colorSchemes, primaryColors, radii };
-
+export { channel };
 export default useThemeStore;

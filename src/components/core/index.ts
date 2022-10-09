@@ -4,9 +4,6 @@ export { default as ActionIconLink } from "./ActionIconLink";
 export * from "./AnchorLink";
 export { default as AnchorLink } from "./AnchorLink";
 
-export * from "./AppSpotlight";
-export { default as AppSpotlight } from "./AppSpotlight";
-
 export * from "./AuthOnly";
 export { default as AuthOnly } from "./AuthOnly";
 
@@ -72,3 +69,6 @@ export { default as ThemeProvider } from "./ThemeProvider";
 
 export * from "./UnknownRoleOnly";
 export { default as UnknownRoleOnly } from "./UnknownRoleOnly";
+
+export * from "./UserProvider";
+export { default as UserProvider } from "./UserProvider";

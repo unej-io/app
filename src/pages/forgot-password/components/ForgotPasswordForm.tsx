@@ -38,7 +38,7 @@ type ForgotPasswordFormValues = {
 function ForgotPasswordForm() {
   const form = useForm<ForgotPasswordFormValues>({
     initialValues: {
-      email: "flamrdevs@gmail.com",
+      email: "",
     },
   });
 

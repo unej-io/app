@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import type { RouteObject } from "react-router-dom";
 import { createRoutes } from "react-router-yesterday";
 
-import { AuthOnly, GuestOnly, StudentRoleOnly, OrganizationRoleOnly, UnknownRoleOnly } from "~/components/core";
+import { AuthOnly, GuestOnly, StudentRoleOnly, OrganizationRoleOnly, UnknownRoleOnly, UserProvider } from "~/components/core";
 import { StudentAppLayout, OrganizationAppLayout, UnknownAppLayout } from "~/components/layouts";
 
 import NotFoundPage from "~/pages/404/page";
@@ -18,47 +18,58 @@ const RootRoutes = createRoutes((route) => {
      * Should auth
      * - Main App based on user role
      */
-    route.element(<AuthOnly redirect="/sign-in" replace children={<Outlet />} />, [
-      /**
-       * Student App
-       * - Form
-       * - Link
-       * - Settings
-       */
-      route.path("student", <StudentRoleOnly children={<StudentAppLayout />} />, [
-        route.index(<StudentIndexPage />),
-        route.lazy.path("form", () => import("~/pages/student/form/page")),
-        route.lazy.path("link", () => import("~/pages/student/link/page")),
-        route.lazy.path("settings", () => import("~/pages/student/settings/page")),
-      ]),
+    route.element(
+      <AuthOnly
+        redirect="/sign-in"
+        replace
+        children={
+          <UserProvider>
+            <Outlet />
+          </UserProvider>
+        }
+      />,
+      [
+        /**
+         * Student App
+         * - Form
+         * - Link
+         * - Settings
+         */
+        route.path("student", <StudentRoleOnly children={<StudentAppLayout />} />, [
+          route.index(<StudentIndexPage />),
+          route.lazy.path("form", () => import("~/pages/student/form/page")),
+          route.lazy.path("link", () => import("~/pages/student/link/page")),
+          route.lazy.path("settings", () => import("~/pages/student/settings/page")),
+        ]),
 
-      /**
-       * Organization App
-       * - Form
-       * - Link
-       * - Settings
-       */
-      route.path("organization", <OrganizationRoleOnly children={<OrganizationAppLayout />} />, [
-        route.index(<OrganizationIndexPage />),
-        route.lazy.path("form", () => import("~/pages/organization/form/page")),
-        route.lazy.path("link", () => import("~/pages/organization/link/page")),
-        route.lazy.path("settings", () => import("~/pages/organization/settings/page")),
-      ]),
+        /**
+         * Organization App
+         * - Form
+         * - Link
+         * - Settings
+         */
+        route.path("organization", <OrganizationRoleOnly children={<OrganizationAppLayout />} />, [
+          route.index(<OrganizationIndexPage />),
+          route.lazy.path("form", () => import("~/pages/organization/form/page")),
+          route.lazy.path("link", () => import("~/pages/organization/link/page")),
+          route.lazy.path("settings", () => import("~/pages/organization/settings/page")),
+        ]),
 
-      /**
-       * Unknown App
-       * - Verify user role
-       */
-      route.element(<UnknownRoleOnly children={<UnknownAppLayout />} />, [
-        route.index(<UnknownIndexPage />),
-        route.lazy.path("verify-me", () => import("~/pages/unknown/verify-me/page")),
-      ]),
+        /**
+         * Unknown App
+         * - Verify user role
+         */
+        route.element(<UnknownRoleOnly children={<UnknownAppLayout />} />, [
+          route.index(<UnknownIndexPage />),
+          route.lazy.path("verify-me", () => import("~/pages/unknown/verify-me/page")),
+        ]),
 
-      /**
-       * Auth fallback
-       */
-      route.catch(<AuthNotFoundPage />),
-    ]),
+        /**
+         * Auth fallback
+         */
+        route.catch(<AuthNotFoundPage />),
+      ]
+    ),
 
     /**
      * Shouldn't auth

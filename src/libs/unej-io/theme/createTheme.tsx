@@ -1,16 +1,22 @@
 import { DEFAULT_THEME } from "@mantine/core";
 import type { ColorScheme, MantineColor, MantineSize, MantineThemeOverride } from "@mantine/core";
 
+import type { AccordionProps } from "@mantine/core";
 import type { AvatarProps } from "@mantine/core";
 import type { CheckboxProps } from "@mantine/core";
 import type { ContainerProps } from "@mantine/core";
 import type { PasswordInputProps } from "@mantine/core";
 
-import { IconUser } from "@tabler/icons";
+import { IconChevronDown, IconUser } from "@tabler/icons";
 
 import { CheckboxIcon, PasswordInputVisibilityToggleIcon } from "../components/core";
 
 const components: MantineThemeOverride["components"] = {
+  Accordion: {
+    defaultProps: {
+      chevron: <IconChevronDown size={20} />,
+    } as AccordionProps,
+  },
   Avatar: {
     defaultProps: {
       children: <IconUser width="75%" height="75%" />,

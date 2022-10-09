@@ -1,9 +1,9 @@
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef } from "react";
 
 import { Outlet } from "react-router-dom";
 
 import { ActionIcon, Anchor, Center, Container, Drawer, Group, Navbar, ScrollArea, Text } from "@mantine/core";
-import { useMediaQuery, useWindowScroll } from "@mantine/hooks";
+import { useDisclosure, useMediaQuery, useWindowScroll } from "@mantine/hooks";
 
 import { IconMenu2 } from "@tabler/icons";
 
@@ -26,15 +26,7 @@ function AppLayout() {
   const { classes, cx, theme } = useStyles();
 
   const [scroll] = useWindowScroll();
-  const [drawer, setDrawer] = useState(false);
-
-  const handleDrawerOpen = useCallback(() => {
-    setDrawer(true);
-  }, []);
-
-  const handleDrawerClose = useCallback(() => {
-    setDrawer(false);
-  }, []);
+  const [drawer, drawerHandle] = useDisclosure(false);
 
   const matchesLargerThanMedium = useMediaQuery(`(min-width: ${theme.breakpoints.md}px)`);
   const currentMatchesLargerThanMedium = useRef(matchesLargerThanMedium);
@@ -42,14 +34,14 @@ function AppLayout() {
   useEffect(
     () =>
       history.listen(() => {
-        setTimeout(handleDrawerClose, 150);
+        setTimeout(drawerHandle.close, 150);
       }),
     []
   );
 
   useEffect(() => {
     if (matchesLargerThanMedium !== currentMatchesLargerThanMedium.current) {
-      handleDrawerClose();
+      drawerHandle.close();
       currentMatchesLargerThanMedium.current = matchesLargerThanMedium;
     }
   }, [matchesLargerThanMedium]);
@@ -59,7 +51,7 @@ function AppLayout() {
       <header className={cx(classes.header, scroll.y > 10 && classes.headerShadow, sharedClasses.blurredBackground)}>
         <Container fluid px="xl" className={sharedClasses.fullHeight}>
           <Group align="center" spacing="xl" className={sharedClasses.fullHeight}>
-            <ActionIcon mr="sm" onClick={handleDrawerOpen} className={classes.header__menu_action}>
+            <ActionIcon mr="sm" onClick={drawerHandle.open} className={classes.header__menu_action}>
               <IconMenu2 />
             </ActionIcon>
 
@@ -80,7 +72,7 @@ function AppLayout() {
 
       <Drawer
         opened={drawer}
-        onClose={handleDrawerClose}
+        onClose={drawerHandle.close}
         title={
           <Anchor href="/" variant="text" className={sharedClasses.flexCenter}>
             <Logo className={classes.logo} />

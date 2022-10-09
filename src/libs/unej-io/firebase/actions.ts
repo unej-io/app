@@ -1,13 +1,13 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut as firebase_signOut,
-  sendPasswordResetEmail as firebase_sendPasswordResetEmail,
-  verifyPasswordResetCode as firebase_verifyPasswordResetCode,
-  confirmPasswordReset as firebase_confirmPasswordReset,
-  sendEmailVerification as firebase_sendEmailVerification,
-  applyActionCode as firebase_applyActionCode,
-  checkActionCode as firebase_checkActionCode,
+  signOut as firebase$signOut,
+  sendPasswordResetEmail as firebase$sendPasswordResetEmail,
+  verifyPasswordResetCode as firebase$verifyPasswordResetCode,
+  confirmPasswordReset as firebase$confirmPasswordReset,
+  sendEmailVerification as firebase$sendEmailVerification,
+  applyActionCode as firebase$applyActionCode,
+  checkActionCode as firebase$checkActionCode,
 } from "firebase/auth";
 import type { User } from "firebase/auth";
 
@@ -22,31 +22,31 @@ async function signUp(email: string, password: string) {
 }
 
 async function signOut() {
-  return await firebase_signOut(auth);
+  return await firebase$signOut(auth);
 }
 
 async function sendPasswordResetEmail(email: string) {
-  return await firebase_sendPasswordResetEmail(auth, email);
+  return await firebase$sendPasswordResetEmail(auth, email);
 }
 
 async function verifyPasswordResetCode(code: string) {
-  return await firebase_verifyPasswordResetCode(auth, code);
+  return await firebase$verifyPasswordResetCode(auth, code);
 }
 
 async function confirmPasswordReset(code: string, newPassword: string) {
-  return await firebase_confirmPasswordReset(auth, code, newPassword);
+  return await firebase$confirmPasswordReset(auth, code, newPassword);
 }
 
 async function sendEmailVerification(user: User) {
-  return await firebase_sendEmailVerification(user);
+  return await firebase$sendEmailVerification(user);
 }
 
 async function applyActionCode(code: string) {
-  return await firebase_applyActionCode(auth, code);
+  return await firebase$applyActionCode(auth, code);
 }
 
 async function checkActionCode(code: string) {
-  return await firebase_checkActionCode(auth, code);
+  return await firebase$checkActionCode(auth, code);
 }
 
 export { signIn, signUp, signOut };
