@@ -2,10 +2,10 @@ import {} from "react";
 
 import { Outlet } from "react-router-dom";
 
-function StudentAppLayout() {
+function StudentLayout() {
   return (
     <>
-      <div>StudentAppLayout</div>
+      <div>StudentLayout</div>
 
       <div>
         <Outlet />
@@ -14,4 +14,4 @@ function StudentAppLayout() {
   );
 }
 
-export default StudentAppLayout;
+export default StudentLayout;

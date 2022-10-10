@@ -8,7 +8,7 @@ import { showNotification, hideNotification } from "@mantine/notifications";
 
 import useAuthStore from "~/stores/auth";
 
-import { auth } from "~/libs/unej-io/firebase/const";
+import auth from "~/libs/unej-io/firebase/auth";
 
 import { AnchorLink, LogoLoader } from "~/components/core";
 

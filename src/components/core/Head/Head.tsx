@@ -8,8 +8,8 @@ import { APP } from "~/const/app";
 
 function getTitle(prefix?: string, suffix?: string) {
   let title = APP.name;
-  if (isTypeofString(prefix)) title = `${prefix} | ${title}`;
-  if (isTypeofString(suffix)) title = `${title} | ${suffix}`;
+  if (isTypeofString(prefix)) title = `${prefix} - ${title}`;
+  if (isTypeofString(suffix)) title = `${title} - ${suffix}`;
   return title.trim();
 }
 

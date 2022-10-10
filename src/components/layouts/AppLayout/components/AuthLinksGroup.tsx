@@ -6,7 +6,8 @@ import { showNotification } from "@mantine/notifications";
 
 import { IconLogout, IconUser } from "@tabler/icons";
 
-import { signOut, getFirebaseErrorMessage } from "~/libs/unej-io/firebase";
+import { signOut } from "~/libs/unej-io/firebase/auth";
+import { getFirebaseErrorMessage } from "~/libs/unej-io/firebase/utilities";
 
 import useAuthStore from "~/stores/auth";
 

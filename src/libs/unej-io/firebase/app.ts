@@ -1,3 +1,4 @@
+import { initializeApp } from "firebase/app";
 import type { FirebaseOptions } from "firebase/app";
 
 const config: FirebaseOptions = {
@@ -9,4 +10,6 @@ const config: FirebaseOptions = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-export default config;
+const app = initializeApp(config);
+
+export default app;

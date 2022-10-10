@@ -5,7 +5,8 @@ import { useForm } from "@mantine/form";
 import type { FormErrors } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 
-import { sendPasswordResetEmail, getFirebaseErrorMessage } from "~/libs/unej-io/firebase";
+import { sendPasswordResetEmail } from "~/libs/unej-io/firebase/auth";
+import { getFirebaseErrorMessage } from "~/libs/unej-io/firebase/utilities";
 
 import { AnchorLink, SuccessAlert } from "~/components/core";
 import { useSubmitHandler } from "~/hooks/core";

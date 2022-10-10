@@ -14,6 +14,9 @@
   "author": "flamrdevs <flamrdevs@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
+    "@dnd-kit/core": "^6.0.5",
+    "@dnd-kit/modifiers": "^6.0.0",
+    "@dnd-kit/sortable": "^7.0.1",
     "@emotion/react": "^11.10.4",
     "@jsonforms/core": "^3.0.0",
     "@jsonforms/react": "^3.0.0",

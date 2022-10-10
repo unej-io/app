@@ -2,10 +2,10 @@ import {} from "react";
 
 import { Outlet } from "react-router-dom";
 
-function UnknownAppLayout() {
+function OrganizationLayout() {
   return (
     <>
-      <div>UnknownAppLayout</div>
+      <div>OrganizationLayout</div>
 
       <div>
         <Outlet />
@@ -14,4 +14,4 @@ function UnknownAppLayout() {
   );
 }
 
-export default UnknownAppLayout;
+export default OrganizationLayout;

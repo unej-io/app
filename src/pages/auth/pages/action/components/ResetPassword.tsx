@@ -7,7 +7,8 @@ import { showNotification } from "@mantine/notifications";
 
 import { IconArrowLeft } from "@tabler/icons";
 
-import { verifyPasswordResetCode, confirmPasswordReset, getFirebaseErrorMessage } from "~/libs/unej-io/firebase";
+import { verifyPasswordResetCode, confirmPasswordReset } from "~/libs/unej-io/firebase/auth";
+import { getFirebaseErrorMessage } from "~/libs/unej-io/firebase/utilities";
 
 import { AnchorLink, CenterLoader, ErrorAlert, SuccessAlert } from "~/components/core";
 import { useSubmitHandler } from "~/hooks/core";

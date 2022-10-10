@@ -3,13 +3,9 @@ import type { RouteObject } from "react-router-dom";
 import { createRoutes } from "react-router-yesterday";
 
 import { AuthOnly, GuestOnly, StudentRoleOnly, OrganizationRoleOnly, UnknownRoleOnly, UserProvider } from "~/components/core";
-import { StudentAppLayout, OrganizationAppLayout, UnknownAppLayout } from "~/components/layouts";
 
 import NotFoundPage from "~/pages/404/page";
 
-import StudentIndexPage from "~/pages/student/index/page";
-import OrganizationIndexPage from "~/pages/organization/index/page";
-import UnknownIndexPage from "~/pages/unknown/index/page";
 import AuthNotFoundPage from "~/pages/auth/pages/404/page";
 
 const RootRoutes = createRoutes((route) => {
@@ -18,58 +14,62 @@ const RootRoutes = createRoutes((route) => {
      * Should auth
      * - Main App based on user role
      */
-    route.element(
-      <AuthOnly
-        redirect="/sign-in"
-        replace
-        children={
-          <UserProvider>
-            <Outlet />
-          </UserProvider>
-        }
-      />,
-      [
-        /**
-         * Student App
-         * - Form
-         * - Link
-         * - Settings
-         */
-        route.path("student", <StudentRoleOnly children={<StudentAppLayout />} />, [
-          route.index(<StudentIndexPage />),
-          route.lazy.path("form", () => import("~/pages/student/form/page")),
-          route.lazy.path("link", () => import("~/pages/student/link/page")),
-          route.lazy.path("settings", () => import("~/pages/student/settings/page")),
-        ]),
+    route.element(<AuthOnly redirect="/sign-in" replace children={<UserProvider children={<Outlet />} />} />, [
+      /**
+       * Student App
+       * - Form
+       * - Link
+       * - Settings
+       */
+      route.path("student", <StudentRoleOnly children={<Outlet />} />, [
+        route.lazy.element(
+          () => import("~/pages/student/__layout__/layout.student"),
+          [
+            route.lazy.index(() => import("~/pages/student/index/page.student.index")),
+            route.lazy.path("form", () => import("~/pages/student/form/page.student.form")),
+            route.lazy.path("link", () => import("~/pages/student/link/page.student.link")),
+            route.lazy.path("settings", () => import("~/pages/student/settings/page.student.settings")),
+          ]
+        ),
+      ]),
 
-        /**
-         * Organization App
-         * - Form
-         * - Link
-         * - Settings
-         */
-        route.path("organization", <OrganizationRoleOnly children={<OrganizationAppLayout />} />, [
-          route.index(<OrganizationIndexPage />),
-          route.lazy.path("form", () => import("~/pages/organization/form/page")),
-          route.lazy.path("link", () => import("~/pages/organization/link/page")),
-          route.lazy.path("settings", () => import("~/pages/organization/settings/page")),
-        ]),
+      /**
+       * Organization App
+       * - Form
+       * - Link
+       * - Settings
+       */
+      route.path("organization", <OrganizationRoleOnly children={<Outlet />} />, [
+        route.lazy.element(
+          () => import("~/pages/organization/__layout__/layout.organization"),
+          [
+            route.lazy.index(() => import("~/pages/organization/index/page.organization.index")),
+            route.lazy.path("form", () => import("~/pages/organization/form/page.organization.form")),
+            route.lazy.path("link", () => import("~/pages/organization/link/page.organization.link")),
+            route.lazy.path("settings", () => import("~/pages/organization/settings/page.organization.settings")),
+          ]
+        ),
+      ]),
 
-        /**
-         * Unknown App
-         * - Verify user role
-         */
-        route.element(<UnknownRoleOnly children={<UnknownAppLayout />} />, [
-          route.index(<UnknownIndexPage />),
-          route.lazy.path("verify-me", () => import("~/pages/unknown/verify-me/page")),
-        ]),
+      /**
+       * Unknown App
+       * - Verify user role
+       */
+      route.element(<UnknownRoleOnly children={<Outlet />} />, [
+        route.lazy.element(
+          () => import("~/pages/unknown/__layout__/layout.index"),
+          [
+            route.lazy.index(() => import("~/pages/unknown/index/page.index")),
+            route.lazy.path("verify-me", () => import("~/pages/unknown/verify-me/page.verify-me")),
+          ]
+        ),
+      ]),
 
-        /**
-         * Auth fallback
-         */
-        route.catch(<AuthNotFoundPage />),
-      ]
-    ),
+      /**
+       * Auth fallback
+       */
+      route.catch(<AuthNotFoundPage />),
+    ]),
 
     /**
      * Shouldn't auth
@@ -78,9 +78,9 @@ const RootRoutes = createRoutes((route) => {
      * - Forgot password
      */
     route.element(<GuestOnly redirect="/" replace children={<Outlet />} />, [
-      route.lazy.path("sign-in", () => import("~/pages/sign-in/page")),
-      route.lazy.path("sign-up", () => import("~/pages/sign-up/page")),
-      route.lazy.path("forgot-password", () => import("~/pages/forgot-password/page")),
+      route.lazy.path("sign-in", () => import("~/pages/sign-in/page.sign-in")),
+      route.lazy.path("sign-up", () => import("~/pages/sign-up/page.sign-up")),
+      route.lazy.path("forgot-password", () => import("~/pages/forgot-password/page.forgot-password")),
     ]),
 
     /**
@@ -90,8 +90,8 @@ const RootRoutes = createRoutes((route) => {
      * - Email verification
      */
     route.path("auth", <Outlet />, [
-      route.lazy.path("action", () => import("~/pages/auth/pages/action/page")),
-      route.lazy.path("email-verification", () => import("~/pages/auth/pages/email-verification/page")),
+      route.lazy.path("action", () => import("~/pages/auth/pages/action/page.auth.action")),
+      route.lazy.path("email-verification", () => import("~/pages/auth/pages/email-verification/page.auth.email-verification")),
     ]),
 
     /**
@@ -99,7 +99,7 @@ const RootRoutes = createRoutes((route) => {
      */
     route.path("__dev__", <Outlet />, [
       //
-      route.lazy.path("components", () => import("~/pages/__DEV__/components/page")),
+      route.lazy.path("components", () => import("~/pages/__DEV__/components/page.__dev__.components")),
     ]),
 
     /**
