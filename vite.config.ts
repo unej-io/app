@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
-  plugins: [process.env.ANALYZE === "true" ? visualizer({ open: true }) : null, react()],
+  plugins: [process.env.ANALYZE === "true" ? visualizer({ open: true, filename: "dist/analyze.html" }) : null, react()],
   server: {
     host: true,
     port: 3001,

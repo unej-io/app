@@ -37,7 +37,7 @@
     "broadcast-channel": "^4.18.0",
     "dayjs": "^1.11.5",
     "embla-carousel-react": "^7.0.3",
-    "firebase": "^9.10.0",
+    "firebase": "^9.11.0",
     "javascript-yesterday": "^1.2.0",
     "ky": "^0.31.3",
     "nanoid": "^4.0.0",

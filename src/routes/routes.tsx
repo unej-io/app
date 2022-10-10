@@ -6,15 +6,13 @@ import { AuthOnly, GuestOnly, StudentRoleOnly, OrganizationRoleOnly, UnknownRole
 
 import NotFoundPage from "~/pages/404/page";
 
-import AuthNotFoundPage from "~/pages/auth/pages/404/page";
-
 const RootRoutes = createRoutes((route) => {
   const routes: RouteObject[] = [
     /**
      * Should auth
      * - Main App based on user role
      */
-    route.element(<AuthOnly redirect="/sign-in" replace children={<UserProvider children={<Outlet />} />} />, [
+    route.path("/", <AuthOnly redirect="/sign-in" replace children={<UserProvider children={<Outlet />} />} />, [
       /**
        * Student App
        * - Form
@@ -68,7 +66,7 @@ const RootRoutes = createRoutes((route) => {
       /**
        * Auth fallback
        */
-      route.catch(<AuthNotFoundPage />),
+      // route.catch(<AuthNotFoundPage />),
     ]),
 
     /**
