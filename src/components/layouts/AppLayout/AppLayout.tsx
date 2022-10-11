@@ -88,7 +88,7 @@ function AppLayout() {
             <DrawerAuthLinks />
           </Navbar.Section>
 
-          <Navbar.Section grow component={ScrollArea} mx="-xs" my="sm" px="xs">
+          <Navbar.Section grow component={ScrollArea} mx="-xs" py="sm" px="xs">
             <DrawerNavLinks />
           </Navbar.Section>
         </Navbar>
