@@ -1,5 +1,5 @@
 [build]
-  command = "yarn run build"
+  command = "pnpm run build || ( npm run install pnpm && pnpm run build )"
   publish = "dist"
 
 [[redirects]]
