@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm run build || ( npm run install pnpm && pnpm run build )"
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
   publish = "dist"
 
 [[redirects]]
