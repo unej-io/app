@@ -17,6 +17,7 @@ const PrimaryColorSelectGroup = forwardRef<HTMLDivElement, PrimaryColorSelectGro
           key={color}
           size="md"
           color={color}
+          title={color}
           radius="xl"
           variant={primaryColor === color ? "filled" : "outline"}
           onClick={() => {

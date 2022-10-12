@@ -17,6 +17,7 @@ const ColorSchemeTogglerSwitch = forwardRef<HTMLInputElement, ColorSchemeToggler
       ref={ref}
       color={colorScheme === "dark" ? "gray" : "dark"}
       size="lg"
+      aria-label="Toggle color scheme"
       {...props}
       checked={colorScheme === "dark"}
       onChange={toggleColorScheme}
