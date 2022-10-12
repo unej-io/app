@@ -1,5 +1,8 @@
+[build.environment]
+  NPM_FLAGS="--version"
+
 [build]
-  command = "npm i -g pnpm && npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
+  command = "npx pnpm i --store=node_modules/.pnpm-store --frozen-lockfile && npx pnpm run build"
   publish = "dist"
 
 [[redirects]]
