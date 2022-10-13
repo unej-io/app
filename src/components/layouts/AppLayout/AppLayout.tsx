@@ -2,7 +2,7 @@ import { Suspense, useEffect, useRef } from "react";
 
 import { Outlet } from "react-router-dom";
 
-import { ActionIcon, Anchor, Center, Container, Drawer, Group, Navbar, ScrollArea, Text } from "@mantine/core";
+import { ActionIcon, Anchor, Box, Center, Container, Drawer, Group, Navbar, ScrollArea, Text } from "@mantine/core";
 import { useDisclosure, useMediaQuery, useWindowScroll } from "@mantine/hooks";
 
 import { IconMenu2 } from "@tabler/icons";
@@ -61,7 +61,7 @@ function AppLayout() {
 
             <StatusBadge variant="outline" size="lg" />
 
-            <div style={{ flexGrow: 1 }} />
+            <Box sx={{ flexGrow: 1 }} />
 
             <ToolbarGroup />
 

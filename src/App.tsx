@@ -31,11 +31,9 @@ function App() {
           <ModalsProvider>
             <AuthProvider>
               <RootProvider>
-                {/*  */}
                 <Suspense>
                   <RootRoutes />
                 </Suspense>
-                {/*  */}
               </RootProvider>
             </AuthProvider>
           </ModalsProvider>

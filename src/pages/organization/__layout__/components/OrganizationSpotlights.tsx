@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { SpotlightProvider } from "@mantine/spotlight";
 import type { SpotlightAction } from "@mantine/spotlight";
 
-import { IconHome, IconLink, IconSearch, IconSettings, IconTable } from "@tabler/icons";
+import { IconCalendarEvent, IconHome, IconLink, IconSearch, IconSettings, IconTable } from "@tabler/icons";
 
-type SpotlightsProps = PropsWithChildren<{}>;
+type OrganizationSpotlightsProps = PropsWithChildren<{}>;
 
-function Spotlights(props: SpotlightsProps) {
+function OrganizationSpotlights(props: OrganizationSpotlightsProps) {
   const navigate = useNavigate();
 
   const actions = useMemo((): SpotlightAction[] => {
@@ -18,25 +18,31 @@ function Spotlights(props: SpotlightsProps) {
       {
         title: "Home",
         description: "Go to home page",
-        onTrigger: () => navigate("/"),
+        onTrigger: () => navigate("/organization"),
         icon: <IconHome />,
+      },
+      {
+        title: "Event",
+        description: "Go to event page",
+        onTrigger: () => navigate("/organization/event"),
+        icon: <IconCalendarEvent />,
       },
       {
         title: "Form",
         description: "Go to form page",
-        onTrigger: () => navigate("/form"),
+        onTrigger: () => navigate("/organization/form"),
         icon: <IconTable />,
       },
       {
         title: "Link",
         description: "Go to link page",
-        onTrigger: () => navigate("/link"),
+        onTrigger: () => navigate("/organization/link"),
         icon: <IconLink />,
       },
       {
         title: "Settings",
         description: "Go to settings page",
-        onTrigger: () => navigate("/settings"),
+        onTrigger: () => navigate("/organization/settings"),
         icon: <IconSettings />,
       },
     ];
@@ -56,5 +62,5 @@ function Spotlights(props: SpotlightsProps) {
   );
 }
 
-export type { SpotlightsProps };
-export default Spotlights;
+export type { OrganizationSpotlightsProps };
+export default OrganizationSpotlights;

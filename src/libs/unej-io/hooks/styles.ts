@@ -23,6 +23,30 @@ const useSharedStyles = createStyles((theme) => ({
   flexGrow: {
     flexGrow: 1,
   },
+
+  logo: {
+    height: 22,
+
+    [theme.fn.largerThan("sm")]: {
+      height: 28,
+    },
+
+    [theme.fn.largerThan("md")]: {
+      height: 32,
+    },
+  },
+
+  logoSmall: {
+    height: 18,
+
+    [theme.fn.largerThan("sm")]: {
+      height: 24,
+    },
+
+    [theme.fn.largerThan("md")]: {
+      height: 28,
+    },
+  },
 }));
 
 export { useSharedStyles };

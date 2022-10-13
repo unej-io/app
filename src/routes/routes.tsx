@@ -1,5 +1,6 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import type { RouteObject } from "react-router-dom";
+
 import { createRoutes } from "react-router-yesterday";
 
 import { AuthOnly, GuestOnly, StudentRoleOnly, OrganizationRoleOnly, UnknownRoleOnly, UserProvider } from "~/components/core";
@@ -26,7 +27,8 @@ const RootRoutes = createRoutes((route) => {
             route.lazy.index(() => import("~/pages/student/index/page.student.index")),
             route.lazy.path("form", () => import("~/pages/student/form/page.student.form")),
             route.lazy.path("link", () => import("~/pages/student/link/page.student.link")),
-            route.lazy.path("settings", () => import("~/pages/student/settings/page.student.settings")),
+            route.path("settings", <Navigate to="/student/settings/account" replace />),
+            route.lazy.path("settings/:tab", () => import("~/pages/student/settings/page.student.settings")),
           ]
         ),
       ]),
@@ -42,9 +44,11 @@ const RootRoutes = createRoutes((route) => {
           () => import("~/pages/organization/__layout__/layout.organization"),
           [
             route.lazy.index(() => import("~/pages/organization/index/page.organization.index")),
+            route.lazy.path("event", () => import("~/pages/organization/event/page.organization.event")),
             route.lazy.path("form", () => import("~/pages/organization/form/page.organization.form")),
             route.lazy.path("link", () => import("~/pages/organization/link/page.organization.link")),
-            route.lazy.path("settings", () => import("~/pages/organization/settings/page.organization.settings")),
+            route.path("settings", <Navigate to="/organization/settings/account" replace />),
+            route.lazy.path("settings/:tab", () => import("~/pages/organization/settings/page.organization.settings")),
           ]
         ),
       ]),
