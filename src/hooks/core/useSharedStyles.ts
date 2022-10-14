@@ -49,4 +49,4 @@ const useSharedStyles = createStyles((theme) => ({
   },
 }));
 
-export { useSharedStyles };
+export default useSharedStyles;

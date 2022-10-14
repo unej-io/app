@@ -3,10 +3,10 @@ import {} from "react";
 import { Anchor, Box, Burger, Group, Header, MediaQuery } from "@mantine/core";
 
 import { Logo } from "~/libs/unej-io/components/core";
-import { useSharedStyles } from "~/libs/unej-io/hooks/styles";
 
 import { StatusBadge } from "~/components/core";
 import { AppToolbarGroup } from "~/components/interfaces";
+import { useSharedStyles } from "~/hooks/core";
 
 type UnknownHeaderProps = {
   opened: boolean;

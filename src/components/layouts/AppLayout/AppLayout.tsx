@@ -10,9 +10,9 @@ import { IconMenu2 } from "@tabler/icons";
 import { APP } from "~/const/app";
 
 import { Logo } from "~/libs/unej-io/components/core";
-import { useSharedStyles } from "~/libs/unej-io/hooks/styles";
 
 import { CenterLoader, history, StatusBadge } from "~/components/core";
+import { useSharedStyles } from "~/hooks/core";
 
 import useStyles from "./styles";
 
