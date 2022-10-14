@@ -5,13 +5,13 @@ import type { ColorScheme, MantineColor, MantineSize } from "@mantine/core";
 
 import { BroadcastChannel } from "broadcast-channel";
 
-import { isTypeofString } from "javascript-yesterday";
+import { hasOwnProperty, isTypeofString } from "javascript-yesterday";
 
 import { withDevtools } from "./@utilities";
 
 const NAME = "app-unej-io:theme-store";
 const colorSchemes: ColorScheme[] = ["light", "dark"];
-const primaryColors: MantineColor[] = ["red", "orange", "yellow", "green", "blue", "indigo", "grape"];
+const primaryColors: MantineColor[] = ["red", "orange", "yellow", "green", "blue", "indigo", "grape", "gray"];
 const radii: MantineSize[] = ["sm", "md", "lg"];
 
 function isValidColorScheme(value: unknown): value is ColorScheme {
@@ -94,6 +94,23 @@ const useThemeStore = create<ThemeStoreType>()(
       }),
       {
         name: NAME,
+        merge(persist, current) {
+          function validatedPersistedState(persist: object) {
+            let result: Partial<ThemeStoreState> = {};
+
+            function setResult<K extends keyof ThemeStoreState>(key: K, check: (value: unknown) => value is ThemeStoreState[K]) {
+              if (hasOwnProperty(persist, key) && check(persist[key])) result[key] = persist[key];
+            }
+
+            setResult("colorScheme", isValidColorScheme);
+            setResult("primaryColor", isValidPrimaryColor);
+            setResult("radius", isValidRadius);
+
+            return result;
+          }
+
+          return Object.assign({}, current, typeof persist === "object" && persist != null ? validatedPersistedState(persist) : {});
+        },
       }
     ),
     {
