@@ -6,7 +6,7 @@ import { Box, Button, Container, Divider, Grid, Group, Paper, Stack, Tabs, Text,
 
 import { IconAdjustments, IconUser } from "@tabler/icons";
 
-import { ColorSchemeTogglerSwitch, Head, PrimaryColorSelectGroup, RadiusSelectGroup } from "~/components/core";
+import { ColorSchemeTogglerSwitch, DefaultRadiusSelectGroup, Head, PrimaryColorSelectGroup } from "~/components/core";
 import { useAuthUser } from "~/hooks/stores";
 
 function AccountPanel() {
@@ -82,7 +82,7 @@ function PreferencesPanel() {
             <Stack>
               <Text size="xl">Radius</Text>
 
-              <RadiusSelectGroup />
+              <DefaultRadiusSelectGroup />
             </Stack>
           </Stack>
         </Paper>

@@ -2,9 +2,9 @@ import {} from "react";
 
 import { Avatar, Box, Divider, Group, Navbar, ScrollArea, Text } from "@mantine/core";
 
-import { IconDiscountCheck, IconHome } from "@tabler/icons";
+import { NavLink } from "@unej-io/ui/react-router";
 
-import { NavLink } from "~/components/core";
+import { IconDiscountCheck, IconHome } from "@tabler/icons";
 
 import useAuthStore from "~/stores/auth";
 

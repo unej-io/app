@@ -18,10 +18,11 @@ specifiers:
   '@mantine/prism': ^5.5.5
   '@mantine/rte': ^5.5.5
   '@mantine/spotlight': ^5.5.5
-  '@tabler/icons': ^1.103.0
+  '@tabler/icons': ^1.104.0
   '@types/node': ^18.7.20
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
+  '@unej-io/ui': ^0.2.2
   '@vitejs/plugin-react': ^2.1.0
   ajv: ^8.11.0
   ajv-formats: ^2.1.1
@@ -61,7 +62,8 @@ dependencies:
   '@mantine/prism': 5.5.5_sboc75uudxrw5k7gcptvtad4eq
   '@mantine/rte': 5.5.5_sboc75uudxrw5k7gcptvtad4eq
   '@mantine/spotlight': 5.5.5_sboc75uudxrw5k7gcptvtad4eq
-  '@tabler/icons': 1.103.0_biqbaboplfbrettd7655fr4n2y
+  '@tabler/icons': 1.104.0_biqbaboplfbrettd7655fr4n2y
+  '@unej-io/ui': 0.2.2_ywqtwbjopb6cpdjrl4c3j3hreu
   ajv: 8.11.0
   ajv-formats: 2.1.1_ajv@8.11.0
   broadcast-channel: 4.18.0
@@ -1267,7 +1269,7 @@ packages:
     dependencies:
       '@mantine/core': 5.5.5_ekj4xtn5nqtot2bmww23lp2qbq
       '@mantine/hooks': 5.5.5_react@18.2.0
-      '@tabler/icons': 1.103.0_biqbaboplfbrettd7655fr4n2y
+      '@tabler/icons': 1.104.0_biqbaboplfbrettd7655fr4n2y
       quill-mention: 3.1.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -1466,8 +1468,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tabler/icons/1.103.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-oXUNf/Bn+88Xm+uWVht9MRRB/usDtjNrzKr7XhlB1P6V4vpWdG68OMffEONDbFqvEMC/eGYfhLI/PUHsR2XN4A==}
+  /@tabler/icons/1.104.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-5AOrHjay37RmpxLpo/Cm4sHCEWuPG/pBFqJE2d4JvILXKwFa4ROTlH6G9bnAZ+yGttEW8KF0DuIKLNgvcI78Ww==}
     peerDependencies:
       react: ^16.x || 17.x || 18.x
       react-dom: ^16.x || 17.x || 18.x
@@ -1520,6 +1522,27 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+
+  /@unej-io/ui/0.2.2_ywqtwbjopb6cpdjrl4c3j3hreu:
+    resolution: {integrity: sha512-QemxFGKJDhnXendqNXL8DvHIUqTOy9kesYR+F7MNEzE+v/Q5SpxnMRE34ZjNG6hFkjEXrqMkxnFR5e/DC7v+Yw==}
+    peerDependencies:
+      '@emotion/react': ^11.10.4
+      '@mantine/core': ^5.5.5
+      '@mantine/hooks': ^5.5.5
+      '@tabler/icons': ^1.104.0
+      next: ^12.3.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-router-dom: 6.3.0
+    dependencies:
+      '@emotion/react': 11.10.4_iapumuv4e6jcjznwuxpf4tt22e
+      '@mantine/core': 5.5.5_ekj4xtn5nqtot2bmww23lp2qbq
+      '@mantine/hooks': 5.5.5_react@18.2.0
+      '@tabler/icons': 1.104.0_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
+    dev: false
 
   /@vitejs/plugin-react/2.1.0_vite@3.1.7:
     resolution: {integrity: sha512-am6rPyyU3LzUYne3Gd9oj9c4Rzbq5hQnuGXSMT6Gujq45Il/+bunwq3lrB7wghLkiF45ygMwft37vgJ/NE8IAA==}

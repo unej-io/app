@@ -3,10 +3,11 @@ import { useForm } from "@mantine/form";
 import type { FormErrors } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 
+import { AnchorLink } from "@unej-io/ui/react-router";
+
 import { signIn } from "~/libs/unej-io/firebase/auth";
 import { getFirebaseErrorMessage } from "~/libs/unej-io/firebase/utilities";
 
-import { AnchorLink } from "~/components/core";
 import { useSubmitHandler } from "~/hooks/core";
 import useAuthStore from "~/stores/auth";
 

@@ -5,10 +5,12 @@ import { useForm } from "@mantine/form";
 import type { FormErrors } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 
+import { SuccessAlert } from "@unej-io/ui/core";
+import { AnchorLink } from "@unej-io/ui/react-router";
+
 import { sendPasswordResetEmail } from "~/libs/unej-io/firebase/auth";
 import { getFirebaseErrorMessage } from "~/libs/unej-io/firebase/utilities";
 
-import { AnchorLink, SuccessAlert } from "~/components/core";
 import { useSubmitHandler } from "~/hooks/core";
 
 import { IconArrowLeft } from "@tabler/icons";

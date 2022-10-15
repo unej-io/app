@@ -5,7 +5,7 @@ import { MantineProvider } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
 import type { HotkeyItem } from "@mantine/hooks";
 
-import { cache, createTheme } from "~/libs/unej-io/theme";
+import { emotionCache, createTheme } from "@unej-io/ui/core";
 
 import useThemeStore, { channel } from "~/stores/theme";
 import type { ThemeStoreMessageData } from "~/stores/theme";
@@ -13,9 +13,9 @@ import type { ThemeStoreMessageData } from "~/stores/theme";
 type ThemeProviderProps = PropsWithChildren<{}>;
 
 function ThemeProvider(props: ThemeProviderProps) {
-  const { colorScheme, primaryColor, radius, toggleColorScheme } = useThemeStore();
+  const { colorScheme, primaryColor, defaultRadius, toggleColorScheme } = useThemeStore();
 
-  const theme = useMemo(() => createTheme(colorScheme, primaryColor, radius), [colorScheme, primaryColor, radius]);
+  const theme = useMemo(() => createTheme({ colorScheme, primaryColor, defaultRadius }), [colorScheme, primaryColor, defaultRadius]);
 
   const hotkeys = useMemo((): HotkeyItem[] => [["mod+J", () => toggleColorScheme()]], []);
   useHotkeys(hotkeys);
@@ -35,8 +35,8 @@ function ThemeProvider(props: ThemeProviderProps) {
           useThemeStore.setState({ primaryColor: data.payload });
           break;
 
-        case "set-radius":
-          useThemeStore.setState({ radius: data.payload });
+        case "set-default-radius":
+          useThemeStore.setState({ defaultRadius: data.payload });
           break;
 
         default:
@@ -52,7 +52,7 @@ function ThemeProvider(props: ThemeProviderProps) {
   }, []);
 
   return (
-    <MantineProvider emotionCache={cache} theme={theme} withGlobalStyles withNormalizeCSS>
+    <MantineProvider emotionCache={emotionCache} theme={theme} withGlobalStyles withNormalizeCSS>
       {props.children}
     </MantineProvider>
   );

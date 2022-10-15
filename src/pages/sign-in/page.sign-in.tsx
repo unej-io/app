@@ -1,6 +1,8 @@
 import { Container, Text, Title } from "@mantine/core";
 
-import { AnchorLink, Head } from "~/components/core";
+import { AnchorLink } from "@unej-io/ui/react-router";
+
+import { Head } from "~/components/core";
 
 import SignInForm from "./components/SignInForm";
 

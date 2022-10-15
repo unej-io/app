@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 import { Stack, Text } from "@mantine/core";
 
+import { CenterLoader, ErrorAlert } from "@unej-io/ui/core";
+import { AnchorLink } from "@unej-io/ui/react-router";
+
 import { applyActionCode } from "~/libs/unej-io/firebase/auth";
 import { getFirebaseErrorMessage } from "~/libs/unej-io/firebase/utilities";
-
-import { AnchorLink, CenterLoader, ErrorAlert } from "~/components/core";
 
 import useAuthStore from "~/stores/auth";
 

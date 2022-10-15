@@ -1,5 +1,6 @@
 import { Container } from "@mantine/core";
-import { ErrorAlert } from "~/components/core";
+
+import { ErrorAlert } from "@unej-io/ui/core";
 
 import ResetPassword from "./ResetPassword";
 import VerifyEmail from "./VerifyEmail";

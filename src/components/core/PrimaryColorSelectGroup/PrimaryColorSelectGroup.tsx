@@ -3,7 +3,9 @@ import { forwardRef } from "react";
 import { ActionIcon, Group } from "@mantine/core";
 import type { GroupProps } from "@mantine/core";
 
-import useThemeStore, { primaryColors } from "~/stores/theme";
+import { primaryColors } from "@unej-io/ui/system";
+
+import useThemeStore from "~/stores/theme";
 
 type PrimaryColorSelectGroupProps = GroupProps;
 

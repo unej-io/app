@@ -2,7 +2,7 @@ import {} from "react";
 
 import { Anchor, Box, Burger, Group, Header, MediaQuery } from "@mantine/core";
 
-import { Logo } from "~/libs/unej-io/components/core";
+import { Logo } from "@unej-io/ui/core";
 
 import { StatusBadge } from "~/components/core";
 import { AppToolbarGroup } from "~/components/interfaces";

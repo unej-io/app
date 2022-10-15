@@ -5,13 +5,13 @@ import { Outlet } from "react-router-dom";
 import { ActionIcon, Anchor, Box, Center, Container, Drawer, Group, Navbar, ScrollArea, Text } from "@mantine/core";
 import { useDisclosure, useMediaQuery, useWindowScroll } from "@mantine/hooks";
 
+import { CenterLoader, Logo } from "@unej-io/ui/core";
+
 import { IconMenu2 } from "@tabler/icons";
 
 import { APP } from "~/const/app";
 
-import { Logo } from "~/libs/unej-io/components/core";
-
-import { CenterLoader, history, StatusBadge } from "~/components/core";
+import { history, StatusBadge } from "~/components/core";
 import { useSharedStyles } from "~/hooks/core";
 
 import useStyles from "./styles";

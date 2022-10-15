@@ -26,7 +26,7 @@ import type { ActionIconVariant, AvatarProps, ButtonVariant } from "@mantine/cor
 
 import { IconSettings } from "@tabler/icons";
 
-import { ColorSchemeTogglerSwitch, PrimaryColorSelectGroup, RadiusSelectGroup } from "~/components/core";
+import { ColorSchemeTogglerSwitch, DefaultRadiusSelectGroup, PrimaryColorSelectGroup } from "~/components/core";
 
 const actionIconVariants: ActionIconVariant[] = ["default", "filled", "gradient", "light", "outline", "subtle", "transparent"];
 const avatarVariants: AvatarProps["variant"][] = ["filled", "gradient", "light", "outline"];
@@ -61,7 +61,7 @@ function DEVComponentsPage() {
             <Stack>
               <Text size="xl">Radius</Text>
 
-              <RadiusSelectGroup />
+              <DefaultRadiusSelectGroup />
             </Stack>
 
             <Divider />

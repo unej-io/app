@@ -6,11 +6,12 @@ import { useLocation } from "react-router-dom";
 import { Center } from "@mantine/core";
 import { showNotification, hideNotification } from "@mantine/notifications";
 
-import useAuthStore from "~/stores/auth";
+import { LogoLoader } from "@unej-io/ui/core";
+import { AnchorLink } from "@unej-io/ui/react-router";
 
 import auth from "~/libs/unej-io/firebase/auth";
 
-import { AnchorLink, LogoLoader } from "~/components/core";
+import useAuthStore from "~/stores/auth";
 
 function CenterLogoLoader() {
   return (

@@ -1,8 +1,8 @@
 import { Box, Divider } from "@mantine/core";
 
-import { IconHome, IconLink, IconSettings, IconTable } from "@tabler/icons";
+import { NavLink } from "@unej-io/ui/react-router";
 
-import { NavLink } from "~/components/core";
+import { IconHome, IconLink, IconSettings, IconTable } from "@tabler/icons";
 
 function DrawerNavLinks() {
   return (
