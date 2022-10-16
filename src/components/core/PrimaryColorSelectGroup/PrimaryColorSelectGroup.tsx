@@ -14,19 +14,24 @@ const PrimaryColorSelectGroup = forwardRef<HTMLDivElement, PrimaryColorSelectGro
 
   return (
     <Group ref={ref} {...props}>
-      {primaryColors.map((color) => (
-        <ActionIcon
-          key={color}
-          size="md"
-          color={color}
-          title={color}
-          radius="xl"
-          variant={primaryColor === color ? "filled" : "outline"}
-          onClick={() => {
-            setPrimaryColor(color);
-          }}
-        />
-      ))}
+      {primaryColors.map((color) => {
+        const active = primaryColor === color;
+
+        return (
+          <ActionIcon
+            key={color}
+            size="md"
+            color={color}
+            title={color}
+            radius="xl"
+            variant={active ? "filled" : "outline"}
+            onClick={() => {
+              setPrimaryColor(color);
+            }}
+            {...(active ? { ["data-autofocus"]: true } : {})}
+          />
+        );
+      })}
     </Group>
   );
 });
