@@ -80,13 +80,14 @@ function ResetPasswordForm(props: ResetPasswordFormProps) {
   return (
     <form onSubmit={handleSubmit}>
       <Paper withBorder shadow="md" p={30} mt={30}>
-        <PasswordInput mt="md" label="Password" placeholder="Your password" required {...form.getInputProps("password")} />
+        <PasswordInput mt="md" label="Password" placeholder="Your password" required withAsterisk {...form.getInputProps("password")} />
 
         <PasswordInput
           mt="md"
           label="Confirm Password"
           placeholder="Confirmation password"
           required
+          withAsterisk
           {...form.getInputProps("confirmPassword")}
         />
 

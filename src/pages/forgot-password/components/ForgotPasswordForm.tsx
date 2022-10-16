@@ -68,7 +68,7 @@ function ForgotPasswordForm() {
   return (
     <form onSubmit={handleSubmit}>
       <Paper withBorder shadow="md" p={30} mt={30}>
-        <TextInput type="email" label="Email" placeholder="Your email" required {...form.getInputProps("email")} />
+        <TextInput type="email" label="Email" placeholder="Your email" required withAsterisk {...form.getInputProps("email")} />
 
         <Button type="submit" mt="xl" fullWidth loading={submitting}>
           Reset password
